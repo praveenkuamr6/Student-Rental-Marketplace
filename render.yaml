@@ -1,0 +1,41 @@
+# Render Blueprint: PostgreSQL database plus Spring Boot API.
+databases:
+  - name: student-rental-marketplace-db
+    databaseName: student_rental_marketplace
+    user: student_rental_user
+    plan: free
+
+services:
+  - type: web
+    name: student-rental-marketplace-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: student-rental-marketplace-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: student-rental-marketplace-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: student-rental-marketplace-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: student-rental-marketplace-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: student-rental-marketplace-db
+          property: password
+      - key: DB_SSLMODE
+        value: require
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_ORIGIN
+        sync: false

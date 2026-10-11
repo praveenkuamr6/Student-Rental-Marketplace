@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: student-rental-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: student_rental_marketplace
+      POSTGRES_USER: student_rental_user
+      POSTGRES_PASSWORD: student_rental_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - rental_postgres_data:/var/lib/postgresql/data
+volumes:
+  rental_postgres_data:

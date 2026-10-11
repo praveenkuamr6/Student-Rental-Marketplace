@@ -1,0 +1,3 @@
+-- PostgreSQL database schema.
+-- Create the database named student_rental_marketplace first.
+-- Spring Data JPA creates and updates application tables at startup (ddl-auto=update).
