@@ -14,11 +14,11 @@ Install JDK 17+, Maven 3.9+, Node.js 20+, npm, and Docker (or PostgreSQL 16). St
 
 1. Start the local PostgreSQL container: `docker compose up -d postgres`. It creates the `student_rental_marketplace` database and local user automatically.
 2. Configure `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`, `DB_SSLMODE`, and `JWT_SECRET` if needed (or edit `backend/src/main/resources/application.properties`). The defaults match `docker-compose.yml`.
-3. Start the backend:
+3. Start the backend from the repository root:
    ```bash
-   cd backend
-   mvn spring-boot:run
+   mvn -f backend/pom.xml spring-boot:run
    ```
+   Alternatively, run `cd backend` first and then `mvn spring-boot:run`. Use `spring-boot:run` for local development; `spring-boot:start` is not the normal foreground startup goal.
 4. In a second terminal start Vite:
    ```bash
    cd frontend
