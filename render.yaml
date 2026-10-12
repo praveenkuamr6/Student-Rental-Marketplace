@@ -1,4 +1,5 @@
-# Render Blueprint: PostgreSQL database plus Spring Boot API.
+
+# Render Blueprint: Free PostgreSQL + Spring Boot API
 databases:
   - name: student-rental-marketplace-db
     databaseName: student_rental_marketplace
@@ -9,6 +10,7 @@ services:
   - type: web
     name: student-rental-marketplace-api
     runtime: docker
+    plan: free
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
     healthCheckPath: /api/health
